@@ -14,7 +14,7 @@ public class TestService {
 	@Autowired
 	private TestMapper testMapper;
 	
-	public List<TestVO> selectTest() {
+	public List<TestVO> select() {
 		return testMapper.selectTest();
 	}
 }
