@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dictation.mapper.UserMapper"> 
+	<insert id="signUp" parameterType="UserVO">
+		INSERT INTO USER(user_id, pw, 
+		position_cd, grade, ban, kor_nm, 
+		end_nm, birth_dt, gender_cd,cel_phone_no,hom_phone_no,email) 
+		VALUES(#{user_id},#{pw},
+		#{position_cd}, #{grade}, #{ban}, #{kor_nm}, 
+		#{end_nm}, #{birth_dt}, #{gender_cd}, #{cel_phone_no},#{hom_phone_no},#{email})
+	</insert>
+</mapper>

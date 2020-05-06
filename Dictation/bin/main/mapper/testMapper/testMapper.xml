@@ -3,5 +3,6 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dictation.mapper.TestMapper"> 
 	<select id="selectTest" resultType="TestVO"> SELECT * FROM TEST </select> 
+	<insert id="insertTest" parameterType="TestVO">INSERT INTO TEST VALUES( #{title},#{content},NULL)</insert>
 </mapper>
 

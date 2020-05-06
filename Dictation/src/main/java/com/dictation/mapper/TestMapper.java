@@ -11,4 +11,5 @@ import com.dictation.vo.TestVO;
 @Mapper
 public interface TestMapper {
 	public List<TestVO> selectTest();
+	public void insertTest(TestVO testVO);
 }

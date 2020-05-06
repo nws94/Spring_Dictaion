@@ -17,4 +17,8 @@ public class TestService {
 	public List<TestVO> select() {
 		return testMapper.selectTest();
 	}
+	
+	public void insertTestVO(TestVO testVO) {
+		testMapper.insertTest(testVO);
+	}
 }
