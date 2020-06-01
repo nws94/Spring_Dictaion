@@ -1,11 +1,16 @@
 package com.dictation.vo;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 public class UserVO {
+	
+
+	
 	private String user_id;
 	private String pw;
 	private String school_cd;
@@ -19,4 +24,8 @@ public class UserVO {
 	private String hom_phone_no;
 	private String gender_cd;
 	private String email;
+	
+	private boolean remember;//세션 만들지말지
+	
+	
 }
