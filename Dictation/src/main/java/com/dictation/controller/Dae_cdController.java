@@ -28,7 +28,7 @@ public class Dae_cdController {
 	
     //insert
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public void execWrite(@RequestBody Dae_cdVO dae_cd) {
+	public void insert(@RequestBody Dae_cdVO dae_cd) {
 		dae_cdService.insert(dae_cd);
 	}
 

@@ -31,6 +31,5 @@ public class UserVO {
 	//gender_cd 에서 dae_cd와 so_cd값을 합치기 위한 변수
 	private String dae_g;
 	private String so_g;
-	
-	
+		
 }

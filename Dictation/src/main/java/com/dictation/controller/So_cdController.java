@@ -29,7 +29,7 @@ public class So_cdController {
 	
     //insert user
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public void execWrite(@RequestBody So_cdVO so_cd) {
+	public void insert(@RequestBody So_cdVO so_cd) {
 		so_cdService.insert(so_cd);
 	}
 

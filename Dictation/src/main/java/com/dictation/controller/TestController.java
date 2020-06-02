@@ -31,7 +31,7 @@ public class TestController {
 	}
 	
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public void execWrite(@RequestBody TestVO user) {
+	public void insert(@RequestBody TestVO user) {
 		testService.insert(user);
 	}
 	

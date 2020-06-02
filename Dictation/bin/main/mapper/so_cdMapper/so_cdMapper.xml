@@ -71,5 +71,6 @@
 		from
 			so_cd
 	</select> 
+	
 </mapper>
 
