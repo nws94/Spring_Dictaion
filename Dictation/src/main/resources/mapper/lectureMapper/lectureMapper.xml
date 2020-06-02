@@ -23,8 +23,8 @@
 			update_date
 			
 		) values(
-			#{year},
-			#{term},
+			(select year from term_cd where use_yn=1),
+			(select term from term_cd where use_yn=1),
 			#{lecture_no},
 			#{lecture_nm},
 			#{school_cd},

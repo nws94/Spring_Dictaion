@@ -2,7 +2,11 @@ package com.dictation.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.dictation.service.LectureService;
 import com.dictation.vo.LectureVO;
@@ -27,7 +32,7 @@ public class LectureController {
 	
 	
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public void execWrite(@RequestBody LectureVO lecture) {
+	public void insert(@RequestBody LectureVO lecture) {
 		lectureService.insert(lecture);
 	}
 
@@ -55,5 +60,33 @@ public class LectureController {
 	@PostMapping(value="/list")
 	public List<LectureVO> list(){
 		return lectureService.list();
-	}	
+	}
+	
+	//강좌들어갈때, 수강신청 눌렀을때 lecture_no 세션값 생성
+	//나중에는 post로 lecture_no 값 줄것
+	@GetMapping(value = "/lecture_no/{lecture_no}")
+	public String lecture_no(@PathVariable("lecture_no") String lecture_no, HttpServletRequest request) throws Exception {
+	
+		HttpSession session = request.getSession();
+		session.setAttribute("lecture_no", lecture_no);
+
+	    return "lecture_no";
+	}
+	
+	//세션값 확인후 지우는 메소드(test용)
+	@GetMapping(value = "/session")
+	public String session(HttpServletRequest request) throws Exception {
+
+		HttpSession session = request.getSession();
+		
+	    System.out.println("user_id 세션값 :" +session.getAttribute("user_id"));
+	    System.out.println("lecture_no 세션값 :" +session.getAttribute("lecture_no"));
+
+	    // 세션에서 지운다.
+	    session.invalidate();
+	    System.out.println("지운후 user_id 세션값 :" +session.getAttribute("user_id"));
+	    System.out.println("지운후 lecture_no 세션값 :" +session.getAttribute("lecture_no"));
+	    return "login/user_id&lecture_no";
+	}
+		
 }

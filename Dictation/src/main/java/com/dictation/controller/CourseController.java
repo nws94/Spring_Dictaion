@@ -2,7 +2,11 @@ package com.dictation.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +32,13 @@ public class CourseController {
 	
     //insert user
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public void execWrite(@RequestBody CourseVO course) {
+	public void insert(@RequestBody CourseVO course,HttpServletRequest request) {
+		
+		//lecture_no
+		HttpSession session = request.getSession();
+		course.setLecture_no((int)session.getAttribute("lecture_no"));
+		
+		
 		courseService.insert(course);
 	}
 

@@ -23,10 +23,10 @@
 			update_date
 			
 		) values(
-			#{year},
-			#{term},
+			(select year from term_cd where use_yn=1),
+			(select term from term_cd where use_yn=1),
 			#{lecture_no},
-			#{board_cd},
+			(select concat(dae_cd, so_cd) from so_cd where dae_cd=#{dae_b} and so_cd=#{so_b}),
 			#{no},
 			#{seq_no},
 			#{title},

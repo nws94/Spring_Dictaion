@@ -2,7 +2,11 @@ package com.dictation.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +32,22 @@ public class BoardController {
 	
     //insert user
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public void execWrite(@RequestBody BoardVO board) {
+	public void insert(@RequestBody BoardVO board,HttpServletRequest request) {
+		
+		//lecture_no
+		HttpSession session = request.getSession();
+		board.setLecture_no((int)session.getAttribute("lecture_no"));
+		
+		
+		//board_cd
+		board.setDae_b("003");
+		if(board.getBoard_cd().equals("001")) {//프론트에서 공지사항이면 001로 데이터 값을 넘김  
+			board.setSo_b("001");
+		}else if(board.getBoard_cd().equals("002")) {//프론트에서 Q&A이면 002로 데이터 값을 넘김
+			board.setSo_b("002");
+		}
+		
+		
 		boardService.insert(board);
 	}
 

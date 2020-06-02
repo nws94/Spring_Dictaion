@@ -25,7 +25,12 @@ public class UserVO {
 	private String gender_cd;
 	private String email;
 	
-	private boolean remember;//세션 만들지말지
+	//position_cd 에서 dae_cd와 so_cd값을 합치기 위한 변수
+	private String dae_p;
+	private String so_p;
+	//gender_cd 에서 dae_cd와 so_cd값을 합치기 위한 변수
+	private String dae_g;
+	private String so_g;
 	
 	
 }
