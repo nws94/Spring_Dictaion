@@ -1,11 +1,16 @@
 package com.dictation.vo;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 public class UserVO {
+	
+
+	
 	private String user_id;
 	private String pw;
 	private String school_cd;
@@ -19,4 +24,12 @@ public class UserVO {
 	private String hom_phone_no;
 	private String gender_cd;
 	private String email;
+	
+	//position_cd 에서 dae_cd와 so_cd값을 합치기 위한 변수
+	private String dae_p;
+	private String so_p;
+	//gender_cd 에서 dae_cd와 so_cd값을 합치기 위한 변수
+	private String dae_g;
+	private String so_g;
+		
 }
