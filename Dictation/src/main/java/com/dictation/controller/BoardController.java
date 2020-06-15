@@ -82,6 +82,7 @@ public class BoardController {
 		board.setNo(Long.valueOf(no));
 		board.setSeq_no(Integer.valueOf(no));
 		
+		
 		boardService.insert(board);
 	}
 
@@ -117,6 +118,19 @@ public class BoardController {
 	@PostMapping(value="/list")
 	public List<BoardVO> list(){
 		return boardService.list();
+	}
+	
+	//정답비교(학생답을 매개변수로 넣음)
+	@PostMapping(value="/answer")
+	public boolean answer(String content, long no, int seq_no) {
+		//원래는 세션값에서 no, seq_no가져와야 함
+		BoardVO board=getById(no, seq_no);
+		if(content.equals(board.getContent())) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 	
 

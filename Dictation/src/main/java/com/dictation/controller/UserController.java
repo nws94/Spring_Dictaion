@@ -35,7 +35,7 @@ public class UserController {
 	
     //insert user
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public void insert(@RequestBody UserVO user) {
+	public UserVO insert(@RequestBody UserVO user) {
 		
 		//position_cd
 		user.setDae_p("003");
@@ -57,6 +57,8 @@ public class UserController {
 		}
 		
 		userService.insert(user);
+		
+		return getById(user.getUser_id());
 	}
 
 

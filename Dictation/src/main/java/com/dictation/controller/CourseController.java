@@ -66,12 +66,17 @@ public class CourseController {
 	//단계번호, 문항번호는 vue에서 가져옴
     //insert user
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public void insert(@RequestBody CourseVO course,HttpServletRequest request) {
+	public void insert(@RequestBody CourseVO course,HttpServletRequest request) throws Exception{
+			
+		//+db에 file_nm, save_file_nm저장하기
+		//course.setFile_nm(originalfileName);
+		//course.setSave_file_nm(save_file_nm);
 		
-		//lecture_no
-		HttpSession session = request.getSession();
-		int lecture_session=(int)session.getAttribute("lecture_no");		
-		course.setLecture_no(lecture_session);
+		
+		//lecture_no 세션값으로 저장
+		//HttpSession session = request.getSession();
+		//int lecture_session=(int)session.getAttribute("lecture_no");		
+		//course.setLecture_no(lecture_session);
 		
 		courseService.insert(course);
 	}
