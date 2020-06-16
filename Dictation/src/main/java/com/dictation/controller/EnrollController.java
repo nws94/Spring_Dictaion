@@ -79,6 +79,7 @@ public class EnrollController {
 
 		String question;
 		CourseVO course;
+		int score=0;
 		boolean[] answer=new boolean[courseList.length];
 
 		for(int i=0; i<courseList.length; i++) {
@@ -86,6 +87,7 @@ public class EnrollController {
 			course=courseService.getById(courseList[i]);
 			if(question.equals(course.getQuestion())) {
 				answer[i]=true;
+				score+=10;
 			}else {
 				answer[i]=false;
 			}
@@ -93,7 +95,7 @@ public class EnrollController {
 		EnrollVO enroll=new EnrollVO();
 		enroll.setLecture_no(courseList[1].getLecture_no());
 		enroll.setUser_id("vv");//임시 아이디(user_id가 기존 enroll에 있어야함)
-		enroll.setPass_course_no(courseList[1].getCourse_no());
+		enroll.setPass_course_no(score);
 		enrollService.update(enroll);
 		return answer;
 		
